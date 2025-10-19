@@ -98,9 +98,9 @@ function formatSkills(skills) {
   if (!skills) return "";
   const arr = skills.split(',').map(s => s.trim()).filter(s => s);
   if (arr.length === 0) return "";
-  if (arr.length === 1) return `Proficient in ${arr[0]}, ready to tackle complex challenges.`;
+  if (arr.length === 1) return `Expert in ${arr[0]}, ready to take on challenging projects.`;
   const last = arr.pop();
-  return `Skilled in ${arr.join(', ')}, and actively developing expertise in ${last}.`;
+  return `Experienced in ${arr.join(', ')}, and currently advancing expertise in ${last}.`;
 }
 
 function formatExperience(exp) {
@@ -109,18 +109,25 @@ function formatExperience(exp) {
 }
 
 // ========== OOP DESIGN ==========
+
+// ---------- Encapsulation ----------
+// Base CV class hides the data (_data) and provides controlled access through getters/setters
 class CV {
-  constructor(data) { this._data = data; }
-  get data() { return this._data; }
-  set data(newData) { this._data = newData; }
-  generate() { return ""; }
+  constructor(data) { this._data = data; } // _data is "private"
+  get data() { return this._data; }        // Getter
+  set data(newData) { this._data = newData; } // Setter
+  generate() { return ""; }                // Abstract method placeholder
 }
+
+// ---------- Inheritance & Polymorphism ----------
+// Child classes inherit from CV (Inheritance)
+// Each overrides generate() to provide unique output (Polymorphism)
 
 // Corporate Template
 class CorporateCV extends CV {
   generate() {
-    const skillsText = formatSkills(this.data.skills);
-    const expText = formatExperience(this.data.experience);
+    const skillsText = formatSkills(this.data.skills);   // dynamic skill formatting
+    const expText = formatExperience(this.data.experience); // dynamic experience formatting
     return `
       <h2>${this.data.name}</h2>
       <p>📍 ${this.data.address}</p>
@@ -184,6 +191,10 @@ class PersonalCV extends CV {
   }
 }
 
+// ---------- Abstraction ----------
+// User doesn’t need to know how CV classes format data internally
+// They just call cv.generate() in previewCV() and get a formatted CV
+
 // ========== PREVIEW ==========
 function previewCV() {
   const formData = new FormData(form);
@@ -192,15 +203,9 @@ function previewCV() {
 
   let cv;
   switch (selectedTemplate) {
-    case "corporate":
-      cv = new CorporateCV(data);
-      break;
-    case "minimal":
-      cv = new MinimalCV(data);
-      break;
-    case "personal":
-      cv = new PersonalCV(data);
-      break;
+    case "corporate": cv = new CorporateCV(data); break;
+    case "minimal":   cv = new MinimalCV(data); break;
+    case "personal":  cv = new PersonalCV(data); break;
   }
 
   document.getElementById("cvPreview").innerHTML = cv.generate();
