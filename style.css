@@ -1,0 +1,88 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f4f6f8;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.page {
+  display: none;
+  text-align: center;
+  padding: 30px;
+  width: 90%;
+  max-width: 600px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.page.active {
+  display: block;
+}
+
+h1 {
+  color: #0078ff;
+}
+
+button {
+  background: #0078ff;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #005fcc;
+}
+
+.templates {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.template-card {
+  background: #eef3f7;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 180px;
+  padding: 10px;
+  transition: 0.3s;
+}
+
+.template-card:hover {
+  transform: scale(1.05);
+  background: #dceeff;
+}
+
+.template-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+#cvPreview {
+  text-align: left;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  line-height: 1.5;
+}
+
+input, textarea {
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}

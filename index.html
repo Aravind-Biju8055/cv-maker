@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProCV Builder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Home Page -->
+  <section id="home" class="page active">
+    <h1>ProCV Builder</h1>
+    <p>Create your professional resume in minutes.</p>
+    <button onclick="showPage('auth')">Get Started</button>
+  </section>
+
+  <!-- Login / Signup -->
+  <section id="auth" class="page">
+    <h2 id="authTitle">Sign Up</h2>
+    
+    <!-- Full Name for Signup -->
+    <div id="fullnameDiv">
+      <input type="text" id="fullname" placeholder="Full Name">
+    </div>
+
+    <input id="username" placeholder="Username">
+    <input id="password" type="password" placeholder="Password">
+    <button onclick="signupOrLogin()">Submit</button>
+
+    <p>
+      <a href="#" onclick="toggleAuthMode()">Switch to Login / Sign Up</a>
+    </p>
+  </section>
+
+  <!-- Template Selection -->
+  <section id="templateSelect" class="page">
+    <h2 class="welcomeMsg"></h2>
+    <h2>Select a Template</h2>
+    <div class="templates">
+      <div class="template-card" onclick="selectTemplate('corporate')">
+        <img src="https://cdn.pixabay.com/photo/2016/04/25/07/15/man-1351317_1280.png" alt="">
+        <h3>Corporate Professional</h3>
+      </div>
+      <div class="template-card" onclick="selectTemplate('minimal')">
+        <img src="https://cdn.pixabay.com/photo/2022/08/28/06/30/student-7415788_1280.png" alt="">
+        <h3>Minimal Modern</h3>
+      </div>
+      <div class="template-card" onclick="selectTemplate('personal')">
+        <img src="https://cdn.pixabay.com/photo/2024/02/21/04/19/ai-generated-8586580_1280.jpg" alt="">
+        <h3>Personal Brand</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Details Form -->
+  <section id="detailsForm" class="page">
+    <h2 class="welcomeMsg"></h2>
+    <h2>Enter Your Details</h2>
+    <form id="cvForm">
+      <input name="name" placeholder="Full Name" required>
+      <input name="email" placeholder="Email">
+      <input name="phone" placeholder="Phone">
+      <input name="address" placeholder="Address">
+      <textarea name="summary" placeholder="Professional Summary"></textarea>
+      <textarea name="skills" placeholder="Skills (comma separated)"></textarea>
+      <textarea name="experience" placeholder="Experience"></textarea>
+      <textarea name="education" placeholder="Education"></textarea>
+      <textarea name="languages" placeholder="Languages Known"></textarea>
+    </form>
+    <button onclick="previewCV()">Preview CV</button>
+  </section>
+
+  <!-- CV Preview -->
+  <section id="preview" class="page">
+    <h2 class="welcomeMsg"></h2>
+    <h2>Preview</h2>
+    <div id="cvPreview"></div>
+    <button onclick="downloadPDF()">Download as PDF</button>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
